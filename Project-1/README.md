@@ -1,5 +1,4 @@
 # Project-1
-Read Me file for Project 1
 
 ## Description (Per Original Project)
 This project uses five programs, named hash-0X, where X is a number between zero and four, inclusive, and  which do identically the same things, but in different manners.  Each program will generate an output file with its results and place them in a file named hash-0X.txt.  The results are entirely uninteresting, but are recorded both to capture part of the program's I/O, but also to verify that each program generated the correct answers.
