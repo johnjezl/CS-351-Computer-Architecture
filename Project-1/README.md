@@ -95,5 +95,5 @@ Remove the old hash executables (the command make rmtargets will do this for you
 
 
 
-{{< figure src="./results.svg" >}}
+![Results Graph](./results.svg)
 
