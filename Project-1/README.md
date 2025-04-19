@@ -19,7 +19,7 @@ Record the times as we'll use them in the report.
 
 Remove the old hash executables (the command make rmtargets will do this for you).  You can rebuild the executables and turn on optimization by issuing the command make OPT="-O2" (including the quotation marks.  You can also add other compiler options by inserting them inside of the quotations marks separating the options by spaces.  E.g., OPT="-O2 -funroll-loops")
 
-### Compilter Optimization Options
+### Compiler Optimization Options
 
 |           options        | description                          |
 |--------------------------|--------------------------------------|
@@ -93,6 +93,6 @@ Remove the old hash executables (the command make rmtargets will do this for you
 |hash-05|-Ofast -march=native -mtune=native -funroll-loops -fomit-frame-pointer -flto -DNDEBUG|6.48|5.98|0.45|5027904|167224|55.209|
 
 
-
+### Chart of Throughput per Variant and Optimization Combination
 ![Results Graph](./results.svg)
 
