@@ -108,7 +108,7 @@ Remove the old hash executables (the command make rmtargets will do this for you
 |hash-04|-Ofast -march=native -mtune=native -funroll-loops -fomit-frame-pointer -flto -DNDEBUG|7.19|6.56|0.46|5012136|139024|46.47|
 |hash-05|-Ofast -march=native -mtune=native -funroll-loops -fomit-frame-pointer -flto -DNDEBUG|6.66|6.03|0.46|5025265|150128|50.18|
 
-### Chart of Throughput per Algorith and Optimization Settings
+### Chart of Throughput by Algorithm and Optimization Settings
 ![Results Graph](./results.svg)
 
 ### Questions Posed in Assignment
