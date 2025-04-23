@@ -109,6 +109,15 @@ Remove the old hash executables (the command make rmtargets will do this for you
 |hash-05|-Ofast -march=native -mtune=native -funroll-loops -fomit-frame-pointer -flto -DNDEBUG|6.66|6.03|0.46|5025265|150128|50.18|
 
 ### Chart of Throughput by Algorithm and Optimization Settings
+
+This graph intends to demonstrate how each algorithm responsed to each optimization attempt.
+
+![Results Graph](./results.svg)
+
+### Chart of Throughput Grouped by Algorithm
+
+This is an ugly graph that attempts to illustrate the difference in performance for an algorithm across all optmization settings.
+
 ![Results Graph](./results.svg)
 
 ### Questions Posed in Assignment
