@@ -118,7 +118,7 @@ This graph intends to demonstrate how each algorithm responsed to each optimizat
 
 This is an ugly graph that attempts to illustrate the difference in performance for an algorithm across all optmization settings.
 
-![Results Graph](./results.svg)
+![Results Graph](./results2.svg)
 
 ### Questions Posed in Assignment
 
