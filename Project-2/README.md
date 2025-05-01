@@ -8,6 +8,8 @@ Similar to Project 1, the hashing program is run using the `time` utility to col
 
 ## Results
 
+### Raw Timing Data
+
 |Thread<br>Count|Wall Clock<br>Time|User Time|System Time|Speedup|
 |:--:|--:|--:|--:|:--:|
 |1|19.06|13.99| 2.15|1.00|
@@ -29,4 +31,13 @@ Similar to Project 1, the hashing program is run using the `time` utility to col
 |80| 1.88|16.98|34.50|10.14|
 
 
+### Speed-Up vs Thread Count
 
+![Results Graph](./speedup-v-threads.svg)
+
+### Evaluation
+
+#### Question: Why you think more threads aren’t necessary better?
+
+The system used to run these tests has a CPU with 18 cores.  As the number of threads approaches that number, there becomes more competition for access to those cores, and as it reaches that number, the CPU is not able to process more threads concurrently, resulting in threads having to wait their turn.  In the aggregate, the program still gets roughly the same amount compute resources, so the total runtime doesn't vary considerably from one case to the next.
+  
