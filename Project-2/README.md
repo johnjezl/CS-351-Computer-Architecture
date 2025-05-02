@@ -41,3 +41,27 @@ Similar to Project 1, the hashing program is run using the `time` utility to col
 
 The system used to run these tests has a CPU with 18 cores.  As the number of threads approaches that number, there becomes more competition for access to those cores, and as it reaches that number, the CPU is not able to process more threads concurrently, resulting in threads having to wait their turn.  In the aggregate, the program still gets roughly the same amount compute resources, so the total runtime doesn't vary considerably from one case to the next.
   
+## Exploring Amdahl's Law
+
+Amdahl's Law suggest that the formula for representing the serial vs parallel time a program runs is represented by the equation:
+
+ T = sT + pT 
+
+Which further factors to:
+
+ T = (1 - p)T + pT
+
+And when we add N thread to the equation we get:
+
+
+ T = (1 - p)T + \frac{p}{n}T 
+
+Or:
+
+ \textrm{speed-up factor} = \frac{1}{(1 - p) + \frac{p}{n}}
+
+### Question: Do you think it’s possible to get “perfect scaling” — meaning that the (1-p) terms is zero?
+
+Not likely. Virtually all algorithms and problems to be solved involve a mix of operations, some of which will be parallelizable and some which won't.  In addition, there will always be setup, teardown, and, more importantly, handling of the resulting data, which will often be less parallelizable than the computations needed to generate the solution.  In the context of the algorithm at hand, setup includes opening and mapping the input time into memory.  There is also the synchronization enforced by the `barrier` (i.e. `arrive_and_wait()`).  And on top of all that, like a big ole juicy meatball on top of a delicious plate of shaghetti, is the limitations of reducing the size of the threads' tasks below the level of an "atomic" parallelizable operation. In this case, that would probably be the computation of a single hash.
+
+
