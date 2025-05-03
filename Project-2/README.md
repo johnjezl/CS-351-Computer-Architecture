@@ -45,20 +45,20 @@ The system used to run these tests has a CPU with 18 cores.  As the number of th
 
 Amdahl's Law suggest that the formula for representing the serial vs parallel time a program runs is represented by the equation:
 
-T = sT + pT 
+$T = sT + pT$ 
 
 Which further factors to:
 
-T = (1 - p)T + pT
+$T = (1 - p)T + pT$
 
 And when we add N thread to the equation we get:
 
 
-T = (1 - p)T + \frac{p}{n}T 
+$T = (1 - p)T + \frac{p}{n}T$
 
 Or:
 
-\textrm{speed-up factor} = \frac{1}{(1 - p) + \frac{p}{n}}
+$\textrm{speed-up factor} = \frac{1}{(1 - p) + \frac{p}{n}}$
 
 ### Question: Do you think it’s possible to get “perfect scaling” — meaning that the (1-p) terms is zero?
 
