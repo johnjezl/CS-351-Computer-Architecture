@@ -121,9 +121,9 @@ $\textrm{speed-up slope} = \frac{10.47 - 1}{64 - 1} = 0.150$
 
 ### Question: What do you think causes the curve to “flatten out” when we use large thread counts?
 
-The thread count appears to flatten as a result of the serial portion of the execution becoming a greater component of the overall execution time.  
+The thread count appears to flatten as a result of the serial portion of the execution becoming a greater component of the overall execution time, and, ultimately, as we run out of cores to distribute the compute time amongst.  
 
-However, I think we're also seeing non-trivial impacts from other factors. These other factors may include thread management overhead and the variability of the time slices given by the CPU as a result of things such as other processes running, relative priority of those processes, and interrupts that preempt our program's execution. The variablility factors begin to have a potential for greater impact on execution time as the total overall execution time gets smaller.
+Other factors may also be at play here. These other factors may include thread management overhead and the variability of the time slices given by the CPU as a result of things such as other processes running, relative priority of those processes, and interrupts that preempt our program's execution. The variablility factors begin to have a potential for greater impact on execution time as the total overall execution time gets smaller.
 
 
 ## The Moral of the Story
