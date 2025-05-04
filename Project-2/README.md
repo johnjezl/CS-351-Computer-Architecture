@@ -80,7 +80,7 @@ results output 1.189e-06 s
 main program 14.869432787 s
 ```
 
-$\textrm{serial} = \frac{0.0115 + 0.00000118}{14.457} = 0.000796 (or 0.0796%)$
+$\textrm{serial} = \frac{0.0115 + 0.00000118}{14.457} = 0.000796\ (or\ 0.0796\\%)$
 
 This shows us that since the serial portion of the program is `0.0796%` of the program's runtime, then `1 - 0.000796 = 0.999204` or `99.920%` of the program is parallalizable.
 
