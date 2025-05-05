@@ -4,7 +4,7 @@
 
 [Triangle](start-01.html)
 
-## "Disk"
+## Disk
 
 [Disk](start-02.html)
 
