@@ -7,17 +7,21 @@
 	    uniform float N, t;
 
 	    out float radius;
-	    out float angle;
 
             void main() {
+                if (gl_VertexID == 0) {
+                    gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+                    return;
+                }
+
 		radius = gl_VertexID % 2 == 1 ? 1.0 : 0.4;
 		
 		float vid = float(gl_VertexID);
 
 		const float Pi = 3.14159265358979;
-		angle = vid * 2.0 * Pi / N + t;
+		float angle = vid * 2.0 * Pi / (N-2.0);
 
-		vec2 v = radius * vec2(cos(angle), sin(angle));
+		vec2 v = radius * vec2(cos(angle + t), sin(angle + t));
 
 		gl_Position = vec4(v, 0.0, 1.0);
             }
@@ -25,15 +29,19 @@
         
         <script id="fragment-shader" type="x-shader/x-fragment">
 	    uniform float t;
+
             in float radius;
-            in float angle;
 
 	    out vec4 fColor;
 
             void main() {
-	    	float raColorWeight = radius * sin(angle);
 		const float Pi = 3.14159265358979;
+	    	float raColorWeight = (t/(2.0 * Pi) - floor(t/(2.0 * Pi))); 
+		if ( raColorWeight < 0.0 ) {
+		    raColorWeight = 0.0 - raColorWeight;
+		}
 	    	int selector = int(floor(t/(2.0 * Pi))) % 4;
+		vec4 red, blue;
 		switch ( selector ) {
 		case 0:
 	    		fColor = vec4(1.0, 1.0, 0.0, 1.0);
@@ -42,14 +50,14 @@
 			fColor = vec4(vec3(radius), 1.0);
 			break;
 		case 2:
-			const vec4 red = vec4(1.0, 0.0, 0.0, 1.0);
-                	const vec4 blue = vec4(0.0, 0.0, 1.0, 1.0);
+			red = vec4(1.0, 0.0, 0.0, 1.0);
+                	blue = vec4(0.0, 0.0, 1.0, 1.0);
                 	fColor = mix(red, blue, radius);
 			break;
 		case 3:
-			vec4 red2 = vec4(raColorWeight, 0.0, 0.0, 1.0);
-                	vec4 blue2 = vec4(0.0, 0.0, raColorWeight, 1.0);
-                	fColor = mix(red2, blue2, radius);
+			red = vec4(raColorWeight, 0.0, 1.0 - raColorWeight, 1.0);
+			blue = vec4(1.0 - raColorWeight, 0.0, raColorWeight, 1.0);
+                	fColor = mix(red, blue, radius);
 			break;
 		default:
 	    		fColor = vec4(0.0, 0.0, 0.0, 1.0);

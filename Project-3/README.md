@@ -12,19 +12,15 @@
 
 [Star](start-03.html)
 
-#### Star w/o origin check
-
-[Star](start-03b.html)
-
 ## Spinny Star
 
 [Spinny Star](start-04.html)
 
-## Color Shifting Star
+## Color Gradient Star
 
-[Spinny Shifty Star](start-05.html)
+[Spinny Gradiented Star](start-05.html)
 
 ## Pattern Rotating and Color Shifting Star
 
-[Spinny Rotatery Shifty Star](start-06.html)
+[Spinny Pattern Rotatery with Color Shifty Star](start-06.html)
 

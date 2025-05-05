@@ -9,12 +9,17 @@
 	    out float radius;
 
             void main() {
+		if (gl_VertexID == 0) {
+                    gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
+                    return;
+                }
+
 		radius = gl_VertexID % 2 == 1 ? 1.0 : 0.4;
 		
 		float vid = float(gl_VertexID);
 
 		const float Pi = 3.14159265358979;
-		float angle = vid * 2.0 * Pi / N + t;
+		float angle = vid * 2.0 * Pi / (N-2.0) + t;
 
 		vec2 v = radius * vec2(cos(angle), sin(angle));
 

@@ -7,11 +7,6 @@
 	    uniform float N;
 
             void main() {
-	        if (gl_VertexID == 0) {
-                    gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
-                    return;
-                }
-
 		float vid = float(gl_VertexID);
 
 		const float Pi = 3.14159265358979;
