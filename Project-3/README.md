@@ -14,5 +14,5 @@
 
 ## Rotating Star
 
-[Star](start-04.html)
+[Rotating Star](start-04.html)
 
