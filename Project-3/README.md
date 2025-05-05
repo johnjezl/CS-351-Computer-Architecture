@@ -16,7 +16,15 @@
 
 [Star](start-03b.html)
 
-## Rotating Star
+## Spinny Star
 
-[Rotating Star](start-04.html)
+[Spinny Star](start-04.html)
+
+## Color Shifting Star
+
+[Spinny Shifty Star](start-05.html)
+
+## Pattern Rotating and Color Shifting Star
+
+[Spinny Rotatery Shifty Star](start-06.html)
 
