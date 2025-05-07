@@ -35,7 +35,8 @@ Similar to Project 1, the hashing program is run using the `time` utility to col
 
 ### Speed-Up vs Thread Count
 
-![Results Graph](speedup-vs-thread-count.png)
+![Results Graph](speedup-v-threads.png)
+
 
 ### Evaluation
 
