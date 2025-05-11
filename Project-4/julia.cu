@@ -172,14 +172,25 @@ using Complex = TComplex<float>;
 inline __device__ float magnitude(const Complex& z) { return z.magnitude(); }
 
 __global__
-void julia(Complex d, Complex center, Color* pixels) {
-    // Add your CUDA implementation of the Julia program here.
-    //
-    // Hint: this function should basically be the same thing as the body
-    //   of the two for loops in the C++ version.  If you're clever, which
-    //   means you choose your variable names well (just like Phil mentions)
-    //   you can pretty much drop in the CPU code, and then do the extra
-    //   CUDA bits
+void julia(Complex d, Complex center, Complex z0, Color* pixels) {
+    long y = (blockIdx.y * blockDim.y) + threadIdx.y;
+    long x = (blockIdx.x * blockDim.x) + threadIdx.x;
+    Complex c(x*d.x, y*d.y);
+    c -= center;
+    Complex z;
+    if ( std::abs(z0.x) > 0.0001 || std::abs(z0.y) > 0.0001 ) {
+    	c = z0;
+    	z = Complex(x*d.x,y*d.y);
+    	z -= center;
+    }
+
+    int iter = 0;
+    while (iter < MaxIterations && magnitude(z) < 2.0) {
+        z = z*z + c;
+        ++iter;
+    }
+
+    pixels[x + y * Width] = setColor(iter);
 }
 
 //----------------------------------------------------------------------------
@@ -210,10 +221,18 @@ void julia(Complex d, Complex center, Color* pixels) {
 //    CPU, and output the results in an image named "julia.ppm".
 //
 
-int main() {
+int main(int argc, char* argv[]) {
+
+    Complex z0;
+    if ( argc > 2 ) {
+        z0.x = atof(argv[1]);
+        z0.y = atof(argv[2]);
+    }
+
     Complex ll(-2.1, -2.1);
-    Complex ur( 2.1,  2.1);
+    Complex ur(2.1, 2.1);
     Complex domain = ur - ll;
+
     Complex center = 0.5 * domain;
     Complex d(domain.x/Width, domain.y/Height);
 
@@ -223,7 +242,7 @@ int main() {
 
     dim3 blockDim(32, 32);
     dim3 numBlocks(Width/blockDim.x, Height/blockDim.y);
-    CUDA_CHECK_KERNEL( (julia<<<numBlocks, blockDim>>>(d, center, gpuPixels)) );
+    CUDA_CHECK_KERNEL( (julia<<<numBlocks, blockDim>>>(d, center, z0, gpuPixels)) );
 
     Color* pixels = new Color[Width * Height];
     CUDA_CHECK_CALL(cudaMemcpy(pixels, gpuPixels, numBytes, cudaMemcpyDeviceToHost));
