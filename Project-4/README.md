@@ -43,7 +43,47 @@ Iota takes an array fills is with an incrementally increasing value (e.g. { 0, 1
 In the case of the iota algorithm, the GPU code runs dramatically slower than the CPU-based code. This appears to be related to process of copying data from GPU to CPU memory. This requires moving a large amount of data across a relatively slow database (as compared to accessing memory locally).
 
 
+## The Mandelbrot Set
+
+This is the famous Mandelbrot set. It is calculated a bit differently than the Julia sets, but it was the beginning of this whole thing, so it must be important. Right???
+
+![Mandelbrot](mandelbrot.png)
+
+
+
 ## Julia Sets
 
+Here are a variety of named Julia sets.  The last two are definitely official and totally not entirely 100% made up by me. Nope. Definitely not.
 
+### Dendrite (0.0, -1.0i)
+
+![Dendrite](dendrite.png)
+
+### Dragon (0.36, 0.1i)
+
+Clearly an eastern dragon. Ain't no Tiamat here...
+
+![Dragon](dragon.png)
+
+### Rabbit (-0.1, 0.8i)
+
+Really? Someone needs to spend more time in nature if they think this is a rabbit...
+
+![Rabbit](rabbit.png)
+
+### Eldrich Horror Arriving at Gate 1 (0.28, 0.008i)
+
+AAAAAAAHHHHHH!!!!!
+
+![Eldrich Horror Arriving at Gate 1](eldrich horror arriving at gate 1.png)
+
+### Tear in the Fabric of the Space Time Continuum (-0.835, -0.2321i)
+
+![Tear in the Fabric of the Space Time Continuum](tear in the fabric of the space time continuum.png)
+
+### Rescue...
+
+Whew! That was close...
+
+![Rescue](rescue.png)
 

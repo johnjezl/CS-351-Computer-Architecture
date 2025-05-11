@@ -175,14 +175,26 @@ __global__
 void julia(Complex d, Complex center, Complex z0, Color* pixels) {
     long y = (blockIdx.y * blockDim.y) + threadIdx.y;
     long x = (blockIdx.x * blockDim.x) + threadIdx.x;
+    Complex z(x*d.x,y*d.y);
+    z -= center;
+
+    int iter = 0;
+    while (iter < MaxIterations && magnitude(z) < 2.0) {
+        z = z*z + z0;
+        ++iter;
+    }
+
+    pixels[x + y * Width] = setColor(iter);
+};
+
+
+__global__
+void mandelbrot(Complex d, Complex center, Color* pixels) {
+    long y = (blockIdx.y * blockDim.y) + threadIdx.y;
+    long x = (blockIdx.x * blockDim.x) + threadIdx.x;
     Complex c(x*d.x, y*d.y);
     c -= center;
     Complex z;
-    if ( std::abs(z0.x) > 0.0001 || std::abs(z0.y) > 0.0001 ) {
-    	c = z0;
-    	z = Complex(x*d.x,y*d.y);
-    	z -= center;
-    }
 
     int iter = 0;
     while (iter < MaxIterations && magnitude(z) < 2.0) {
@@ -191,7 +203,7 @@ void julia(Complex d, Complex center, Complex z0, Color* pixels) {
     }
 
     pixels[x + y * Width] = setColor(iter);
-}
+};
 
 //----------------------------------------------------------------------------
 //
@@ -223,8 +235,10 @@ void julia(Complex d, Complex center, Complex z0, Color* pixels) {
 
 int main(int argc, char* argv[]) {
 
+    bool doMandelbrot = true;
     Complex z0;
     if ( argc > 2 ) {
+    	doMandelbrot = false;
         z0.x = atof(argv[1]);
         z0.y = atof(argv[2]);
     }
@@ -242,7 +256,11 @@ int main(int argc, char* argv[]) {
 
     dim3 blockDim(32, 32);
     dim3 numBlocks(Width/blockDim.x, Height/blockDim.y);
-    CUDA_CHECK_KERNEL( (julia<<<numBlocks, blockDim>>>(d, center, z0, gpuPixels)) );
+    if ( doMandelbrot ) {
+        CUDA_CHECK_KERNEL( (mandelbrot<<<numBlocks, blockDim>>>(d, center, gpuPixels)) );
+    } else {
+        CUDA_CHECK_KERNEL( (julia<<<numBlocks, blockDim>>>(d, center, z0, gpuPixels)) );
+    }
 
     Color* pixels = new Color[Width * Height];
     CUDA_CHECK_CALL(cudaMemcpy(pixels, gpuPixels, numBytes, cudaMemcpyDeviceToHost));
