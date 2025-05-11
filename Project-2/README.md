@@ -37,6 +37,11 @@ Similar to Project 1, the hashing program is run using the `time` utility to col
 
 ![Results Graph](speedup-v-threads.png)
 
+Ok, ok, while "crayon-on-paper" was allowed as a charting tool, here's the /real/ graph.
+
+
+![Results Graph](speedup-v-threads.svg)
+
 
 ### Evaluation
 
