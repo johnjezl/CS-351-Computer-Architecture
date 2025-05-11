@@ -97,11 +97,11 @@ Really? Someone needs to spend more time in nature if they think this is a rabbi
 
 AAAAAAAHHHHHH!!!!!
 
-![Eldrich Horror Arriving at Gate 1](eldrich horror arriving at gate 1.png)
+![Eldrich Horror Arriving at Gate 1](eldrich%20horror%20arriving%20at%20gate%201.png)
 
 #### Tear in the Fabric of the Space Time Continuum (-0.835, -0.2321i)
 
-![Tear in the Fabric of the Space Time Continuum](tear in the fabric of the space time continuum.png)
+![Tear in the Fabric of the Space Time Continuum](tear%20in%20the%20fabric%20of%20the%20space-time%20continuum.png)
 
 #### Rescue...
 
